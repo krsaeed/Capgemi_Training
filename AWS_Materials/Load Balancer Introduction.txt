@@ -1,0 +1,141 @@
+A load balancer accepts incoming traffic from clients and routes requests to EC2 instances 
+( Targets). 
+The load balancer also monitors the health of its registered targets and ensures that it routes traffic only to healthy targets. 
+When the load balancer detects an unhealthy target, it stops routing traffic to that target. It then resumes routing traffic to that target when it detects that the target is healthy again.
+
+
+
+
+
+
+Step 1: Create Linux Machine
+Launch instance ---  Amazon Linux -- No of intances - 1 --- Name Tag- Lin-1 --- Security Group - LinSG17
+Description - LinSG
+Add Rule
+HTTP
+
+Launch 
+
+---------- 
+
+
+Step 2: COnvert pem to ppk file
+
+
+Step 3:  Access the machine
+
+Step 4: Run the commands to install web package
+sudo su
+ yum update -y
+ yum install httpd -y
+cd    /var/www/html
+echo "MyGoogle-1" > index.html
+ls
+service httpd start
+chkconfig httpd on
+
+
+
+
+Step 5: Access the webserver by using public_ip
+
+
+
+Step 6: Launch one more Linux Machine and install Web package
+AmazonLinux -- Step 3: Advanced Details - User data 
+
+#!/bin/bash
+sudo su
+yum update -y
+yum install httpd -y
+cd /var/www/html
+echo "MyGoogle-2" > index.html
+service httpd start
+chkconfig httpd on
+
+
+Next -- Add Name Tag -- Step 6: Select existing security group -- Choose existing key pair -- Launch instance.
+
+
+
+Step 7: Create load balancers
+Select classic load balancer
+
+Load Balancer Name - MyLB --> Next ----> select existing security group ---> NExt -- Step 4: 
+
+Response Timeout - 2 Seconds
+Interval - 5 Seconds
+Unhealthy threshold - 2 
+Healthy threshold - 2 
+
+Next --  Attach both the instances
+Next -- Next --Create
+
+
+
+
+Step 8: Lest verify the 2nd instance manually
+Select public ip and paste in browser
+
+Step 9: Access the load balance by using DNS   
+and experience the load balancer.
+
+Step 10:  If one server is down, it should redirect the traffic to another server.
+
+1) we can stop/terminate the machine
+2) remove the file / rename the file
+
+Lets remove index.html file in server1
+
+Go to putty
+ls  ( To see the list of files )
+
+# rm index.html
+
+Now, access the load balance  , traffic should be redirected to 2nd server.
+
+
+How can we know, which instance is down?
+Goto load balances ---> instances tab,
+We can see the status is OutOfService.
+
++++++++
+Lets re create index.html file
+
+# echo  "Google-1" > index.html
+
++++++++++++
+
+Now load balance will start sending the traffic to server1
+
+++++++
+To avoid billing ----> remove both the instance  ----> delete load balances
+
+
+Auto-Scalling Concept :
+
+Autoscaling, also spelled auto scaling or auto-scaling, and sometimes also called automatic scaling, is a method used in cloud computing that dynamically adjusts the amount of computational resources in a server farm - typically measured by the number of active servers - automatically based on the load on the farm.
+
+How DevOps Works
+Under a DevOps model, development and operations teams are no longer “siloed.” Sometimes, these two teams are merged into a single team where the engineers work across the entire application lifecycle, from development and test to deployment to operations, and develop a range of skills not limited to a single function.
+
+In some DevOps models, quality assurance and security teams may also become more tightly integrated with development and operations and throughout the application lifecycle. When security is the focus of everyone on a DevOps team, this is sometimes referred to as DevSecOps.
+These teams use practices to automate processes that historically have been manual and slow. They use a technology stack and tooling which help them operate and evolve applications quickly and reliably. These tools also help engineers independently accomplish tasks (for example, deploying code or provisioning infrastructure) that normally would have required help from other teams, and this further increases a team’s velocity.
+
+
+Benefits of DevOps
+
+Speed
+Move at high velocity so you can innovate for customers faster, adapt to changing markets better, and grow more efficient at driving business results. The DevOps model enables your developers and operations teams to achieve these results. For example, microservices and continuous delivery let teams take ownership of services and then release updates to them quicker.
+
+Rapid Delivery
+Increase the frequency and pace of releases so you can innovate and improve your product faster. The quicker you can release new features and fix bugs, the faster you can respond to your customers’ needs and build competitive advantage. Continuous integration and continuous delivery are practices that automate the software release process, from build to deploy.
+
+Reliability
+Ensure the quality of application updates and infrastructure changes so you can reliably deliver at a more rapid pace while maintaining a positive experience for end users. Use practices like continuous integration and continuous delivery to test that each change is functional and safe. Monitoring and logging practices help you stay informed of performance in real-time.
+
+Scale
+Operate and manage your infrastructure and development processes at scale. Automation and consistency help you manage complex or changing systems efficiently and with reduced risk. For example, infrastructure as code helps you manage your development, testing, and production environments in a repeatable and more efficient manner.
+
+Improved Collaboration
+Build more effective teams under a DevOps cultural model, which emphasizes values such as ownership and accountability. Developers and operations teams collaborate closely, share many responsibilities, and combine their workflows. This reduces inefficiencies and saves time (e.g. reduced handover periods between developers and operations, writing code that takes into account the environment in which it is run).

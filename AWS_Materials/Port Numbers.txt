@@ -1,0 +1,55 @@
+Port Numbers Introduction :
+
+This is a list of TCP and UDP port numbers used by protocols for operation of network applications.
+
+The Transmission Control Protocol (TCP) and the User Datagram Protocol (UDP) only need one port for duplex, bidirectional traffic. They usually use port numbers that match the services of the corresponding TCP or UDP implementation, if they exist.
+
+Who will assign the Port Numbers :
+
+The Internet Assigned Numbers Authority (IANA) is responsible for maintaining the official assignments of port numbers for specific uses.
+
+List of Protocals and Resevered Port Numbers : The Port Numbers range is 0-1023  
+
+Port Number : 20      FTP Protocal for Data Transfer 
+
+Port Number : 21      FTP Protocal for COntrol Command 
+
+Port Number ; 22       SSH Protocal - Secure Logins , File Transfers and port Forwarding 
+
+Port Number 25 :    SMTP : Simple Mail Transfer Protocol used for email Route between email servers.
+
+Port Number : 80 :  The Hypertext Transfer Protocol (HTTP) is an application layer protocol in the Internet protocol suite model for distributed, collaborative, hypermedia information systems.HTTP is the foundation of data communication for the World Wide Web, where hypertext documents include hyperlinks to other resources that the user can easily access, for example by a mouse click or by tapping the screen in a web browser.
+
+Port Number : 109 : POP2 Protocol 
+
+Port Number : 110 : POP3 Protocol 
+
+Port Number : 443 : HTTPS 
+
+Port Numner : 989 : FTP 
+
+RDP : 3389 
+
+
+The range of port numbers from 1024 to 49151 (210 to 214 + 215 − 1) are the registered ports. They are assigned by IANA for specific service upon application by a requesting entity.[2] On most systems, registered ports can be used without superuser privileges.
+
+
+0 to 65535
+
+0 to 1024 are reserved 
+
+1024 to 49151 Dynamic Port Numbers
+
+
+Jenkins is an open source automation server. It helps automate the parts of software development related to building, testing, and deploying, facilitating continuous integration and continuous delivery. It is a server-based system that runs in servlet containers such as Apache Tomcat. 
+
+Overview. CI/CD is a method to frequently deliver apps to customers by introducing automation into the stages of app development. The main concepts attributed to CI/CD are continuous integration, continuous delivery, and continuous deployment.
+
+Jenkins deployments are typically self-hosted, with users maintaining the servers in their own data centers. GitHub Actions offers a hybrid cloud approach by hosting its own runners that you can use to run jobs, while also supporting self-hosted runners. For more information, see About self-hosted runners.
+
+Jenkins is an open-source automation tool written in Java with plugins built for continuous integration. Jenkins is used to build and test your software projects continuously making it easier for developers to integrate changes to the project, and making it easier for users to obtain a fresh build.
+
+While Jenkins is more flexible to create and deploy complex workflows, Azure DevOps is faster to adapt. In most cases, organizations use both the tools and in such cases, Azure Pipelines supports integration with Jenkins.
+
+Jenkins Pipeline (or simply Pipeline with a capital P) is a suite of plugins that supports implementing and integrating continuous delivery pipelines into Jenkins. This allows you to automate the process of getting software from version control through to your users and customers.
+
